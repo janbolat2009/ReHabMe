@@ -1,0 +1,17 @@
+# Staging / demo stack. The ML service is only reachable on the internal network.
+services:
+  api:
+    build: { context: ., args: { VITE_AUTH_PROVIDER: local } }
+    env_file: .env.staging
+    environment: { ML_SERVICE_URL: "http://ml:8001" }
+    ports: ["3001:3001"]
+    volumes: ["api-data:/data"]
+    depends_on: [ml]
+    restart: unless-stopped
+  ml:
+    build: ./ml
+    volumes: ["./ml/artifacts:/app/artifacts:ro"]
+    expose: ["8001"]
+    restart: unless-stopped
+volumes:
+  api-data:

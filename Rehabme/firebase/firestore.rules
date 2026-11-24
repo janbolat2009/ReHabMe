@@ -1,0 +1,11 @@
+rules_version = '2';
+// ReHabMe v2 stores all health data in its own API database. The legacy Realtime Database / Firestore
+// (public leaderboard, group chat, profiles) must no longer be reachable from clients.
+// Export any legacy data you need BEFORE deploying: `firebase deploy --only firestore:rules,database`.
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

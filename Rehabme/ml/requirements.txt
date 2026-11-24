@@ -1,0 +1,10 @@
+# ReHabMe ML pipeline + inference service (Python 3.12)
+numpy>=2.0
+pandas>=2.2
+scikit-learn>=1.5
+lifelines>=0.30
+optuna>=4.0
+joblib>=1.4
+fastapi>=0.115
+uvicorn>=0.30
+pytest>=8.0

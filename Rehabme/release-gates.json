@@ -1,0 +1,23 @@
+{
+  "$comment": "Release gates. 'technical' gates allow deployment of the software to production infrastructure. 'clinical' gates must ALL be signed off before real patients use medical features. Evidence = path to a committed, reviewed document. Never mark a gate passed without evidence.",
+  "technical": [
+    { "id": "T1", "title": "Unit, API, AI-safety and ML tests pass in CI", "status": "passed", "evidence": "TESTING.md" },
+    { "id": "T2", "title": "E2E patient journey and automated WCAG 2.2 AA checks pass", "status": "passed", "evidence": "TESTING.md" },
+    { "id": "T3", "title": "Dependency vulnerability scan wired into CI", "status": "passed", "evidence": ".github/workflows/ci.yml" },
+    { "id": "T4", "title": "Production config refuses unsafe settings (local auth, demo models, unapproved KB)", "status": "passed", "evidence": "server/config.js" },
+    { "id": "T5", "title": "Backups + restore drill performed on staging", "status": "open", "owner": "DevOps", "evidence": null },
+    { "id": "T6", "title": "Firebase legacy database rules deployed (deny-all) after data export", "status": "open", "owner": "DevOps", "evidence": null },
+    { "id": "T7", "title": "Error monitoring and uptime alerts configured", "status": "open", "owner": "DevOps", "evidence": null },
+    { "id": "T8", "title": "Penetration test / external security review", "status": "open", "owner": "Security", "evidence": null }
+  ],
+  "clinical": [
+    { "id": "C1", "title": "Exercise library reviewed and approved by licensed rehabilitation specialists", "status": "open", "owner": "Clinical lead", "evidence": null },
+    { "id": "C2", "title": "Screening questionnaire, starting levels and adaptation thresholds approved", "status": "open", "owner": "Clinical lead", "evidence": null },
+    { "id": "C3", "title": "Medical knowledge-base documents reviewed (review_status: approved)", "status": "open", "owner": "Clinical lead", "evidence": null },
+    { "id": "C4", "title": "Prediction model trained on real, consented clinical data and externally validated", "status": "open", "owner": "ML lead + principal investigator", "evidence": null },
+    { "id": "C5", "title": "Assistant red-team evaluation by clinicians (emergency, medication, mental-health prompts)", "status": "open", "owner": "Clinical safety officer", "evidence": null },
+    { "id": "C6", "title": "Regulatory classification decided (SaMD or not) for each target market", "status": "open", "owner": "Regulatory", "evidence": null },
+    { "id": "C7", "title": "Legal review: privacy policy, terms, DPIA, DPAs with sub-processors", "status": "open", "owner": "Legal / DPO", "evidence": null },
+    { "id": "C8", "title": "Usability testing with stroke survivors (aphasia, hemiparesis, low vision)", "status": "open", "owner": "Product / UX research", "evidence": null }
+  ]
+}

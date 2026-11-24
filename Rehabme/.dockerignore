@@ -1,0 +1,13 @@
+node_modules
+dist
+.env
+.env.*
+!.env.*.example
+server/data
+ml/.venv
+ml/data
+ml/artifacts
+public/assets/motorica/**/*.MOV
+test-results
+playwright-report
+.git

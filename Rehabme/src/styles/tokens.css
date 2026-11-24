@@ -1,0 +1,132 @@
+/* ReHabMe design tokens — every component reads these; themes and accessibility modes only swap tokens. */
+:root {
+  /* Palette: warm paper & ink, one coral signal, a calm teal for positive data. */
+  --paper: #f4f1ea;
+  --paper-2: #ebe6db;
+  --surface: #fffdf8;
+  --ink: #13201e;
+  --ink-2: #33403d;
+  --ink-3: #56625e; /* ≥ 5:1 on --paper */
+  --line: rgba(19, 32, 30, 0.12);
+  --line-strong: rgba(19, 32, 30, 0.24);
+  --accent: #e4572e; /* graphics & large display only (3.4:1) */
+  --accent-ink: #a93a17; /* accent for text (≥ 5:1) */
+  --accent-soft: #f8ddd2;
+  --teal: #1d6b5f;
+  --teal-soft: #d5e7e0;
+  --danger: #b42318;
+  --danger-soft: #fbe1dd;
+  --warn: #8a5a00;
+  --warn-soft: #f6e7c5;
+  --night: #0e1716;
+  --night-2: #162321;
+  --on-night: #ece8df;
+  --on-night-2: #aab4b0;
+
+  /* Domain colours for data viz — always paired with an icon + label, never colour alone. */
+  --d-memory: #5650c7;
+  --d-attention: #9a6410;
+  --d-cognition: #1d6b5f;
+  --d-motor: #2b67a8;
+  --d-speech: #8a3fa6;
+  --d-wellbeing: #b04a6f;
+
+  /* Typography */
+  --font-sans: 'Onest Variable', 'Onest', system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+  --font-display: 'Unbounded Variable', 'Unbounded', var(--font-sans);
+  --font-serif: 'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --font-mono: 'JetBrains Mono Variable', 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --font-scale: 1.15; /* user-adjustable 1.0–1.6 (Accessibility Center) */
+  --t-xs: 0.78rem;
+  --t-sm: 0.89rem;
+  --t-md: 1rem;
+  --t-lg: 1.2rem;
+  --t-xl: 1.55rem;
+  --t-2xl: clamp(1.9rem, 1.4rem + 1.6vw, 2.6rem);
+  --t-3xl: clamp(2.4rem, 1.6rem + 3vw, 3.6rem);
+  --t-display: clamp(2.9rem, 1.2rem + 7.2vw, 8rem);
+  --lh: 1.55;
+  --tracking-label: 0.08em;
+  --letter: 0;
+  --word: 0;
+
+  /* Space & shape */
+  --s-1: 0.25rem; --s-2: 0.5rem; --s-3: 0.75rem; --s-4: 1rem; --s-5: 1.5rem; --s-6: 2rem; --s-7: 3rem; --s-8: 4.5rem; --s-9: 7rem;
+  --gutter: clamp(16px, 4vw, 48px);
+  --maxw: 1320px;
+  --r-panel: clamp(18px, 1.6vw, 26px);
+  --r-field: 16px;
+  --r-pill: 999px;
+  --target: 52px; /* minimum interactive size (WCAG 2.5.8 needs 24; we use 52) */
+
+  /* Elevation (soft, warm) */
+  --shadow-1: 0 1px 0 rgba(19, 32, 30, 0.04), 0 1px 2px rgba(19, 32, 30, 0.06);
+  --shadow-2: 0 2px 6px rgba(19, 32, 30, 0.06), 0 12px 32px -12px rgba(19, 32, 30, 0.18);
+  --shadow-3: 0 24px 60px -20px rgba(19, 32, 30, 0.35);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --d-fast: 0.18s;
+  --d-med: 0.45s;
+  --d-slow: 0.9s;
+
+  color-scheme: light;
+}
+
+/* ---- Dark theme (patient choice; also good for light sensitivity) ---- */
+:root[data-theme='dark'] {
+  --paper: #0f1716;
+  --paper-2: #16201f;
+  --surface: #1a2624;
+  --ink: #ece8df;
+  --ink-2: #cfd4cf;
+  --ink-3: #a7b0ac;
+  --line: rgba(236, 232, 223, 0.12);
+  --line-strong: rgba(236, 232, 223, 0.26);
+  --accent: #f06a42;
+  --accent-ink: #ff9a78;
+  --accent-soft: #3a2119;
+  --teal: #5fc2ae;
+  --teal-soft: #173430;
+  --danger: #ff8a7d;
+  --danger-soft: #3b1714;
+  --warn: #f0c060;
+  --warn-soft: #33270e;
+  --d-memory: #9c97ff; --d-attention: #e3a84a; --d-cognition: #5fc2ae; --d-motor: #6fa8e8; --d-speech: #cf8ae8; --d-wellbeing: #ee8fb2;
+  --shadow-1: none;
+  --shadow-2: 0 0 0 1px var(--line);
+  --shadow-3: 0 0 0 1px var(--line-strong);
+  color-scheme: dark;
+}
+
+/* ---- High contrast (WCAG AAA-level text, solid borders) ---- */
+:root[data-contrast='high'] {
+  --paper: #ffffff;
+  --paper-2: #f2f2f2;
+  --surface: #ffffff;
+  --ink: #000000;
+  --ink-2: #000000;
+  --ink-3: #1f1f1f;
+  --line: #000000;
+  --line-strong: #000000;
+  --accent: #a3300f;
+  --accent-ink: #7a2208;
+  --teal: #0b4d42;
+  --shadow-1: none;
+  --shadow-2: 0 0 0 2px #000;
+  --shadow-3: 0 0 0 2px #000;
+}
+:root[data-theme='dark'][data-contrast='high'] {
+  --paper: #000; --paper-2: #111; --surface: #000; --ink: #fff; --ink-2: #fff; --ink-3: #e6e6e6; --line: #fff; --line-strong: #fff;
+  --accent-ink: #ffb199; --teal: #7fe0cc; --shadow-2: 0 0 0 2px #fff; --shadow-3: 0 0 0 2px #fff;
+}
+
+:root[data-targets='large'] { --target: 64px; }
+:root[data-spacing='wide'] { --lh: 1.8; --letter: 0.03em; --word: 0.12em; }
+
+/* Reduced motion: system preference unless the user explicitly chose full motion; or forced by the user. */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion='full']) { --d-fast: 0.01ms; --d-med: 0.01ms; --d-slow: 0.01ms; }
+}
+:root[data-motion='reduced'] { --d-fast: 0.01ms; --d-med: 0.01ms; --d-slow: 0.01ms; }
